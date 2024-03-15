@@ -1,6 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, use_super_parameters
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -87,7 +86,7 @@ class CustomContainerCard extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(

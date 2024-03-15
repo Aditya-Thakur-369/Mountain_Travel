@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, non_constant_identifier_names, use_super_parameters, must_be_immutable
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +101,7 @@ class _MoutainScreenState extends State<MoutainScreen> {
           dismissThresholds: 0.75,
           action: () async {
             context.push(Routes.discoverscreen.path, extra: place_items);
+            return null;
           },
           alignLabel: Alignment.center,
           label: Text(

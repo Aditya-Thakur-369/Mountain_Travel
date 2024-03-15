@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mountain_travel/core/animations/fade_animation.dart';
 import 'package:mountain_travel/core/common_color/common_color.dart';
 import 'package:mountain_travel/features/discover/widget/custom_icon.dart';
 import 'package:mountain_travel/features/home/widget/beach_screen.dart';
@@ -45,13 +46,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomIcon(
-                      icon: Icons.menu,
-                      function: () {},
+                    FadeAnimation(
+                      duration: const Duration(seconds: 1),
+                      begin: 0.1,
+                      end: 0.9,
+                      child: CustomIcon(
+                        icon: Icons.menu,
+                        function: () {},
+                      ),
                     ),
-                    CustomIcon(
-                      icon: Icons.search,
-                      function: () {},
+                    FadeAnimation(
+                      duration: const Duration(seconds: 1),
+                      begin: 0.1,
+                      end: 0.9,
+                      child: CustomIcon(
+                        icon: Icons.search,
+                        function: () {},
+                      ),
                     )
                   ],
                 ),

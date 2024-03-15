@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, use_super_parameters, non_constant_identifier_names
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,6 +39,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 CustomIcon(
                     icon: Icons.arrow_back_ios_new_sharp,
                     function: () {
+                      // context.push(Routes.homescreen.path);
                       context.pop();
                     }),
                 const SizedBox(

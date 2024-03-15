@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, use_super_parameters, camel_case_types, non_constant_identifier_names
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +101,7 @@ class _Beach_ScreenState extends State<Beach_Screen> {
           dismissThresholds: 0.75,
           action: () async {
             context.push(Routes.discoverscreen.path, extra: beach_items);
+            return null;
           },
           alignLabel: Alignment.center,
           label: Text(

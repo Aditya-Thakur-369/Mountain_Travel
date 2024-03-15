@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:mountain_travel/features/home/model/place_model.dart';
 
 List<PlaceModel> place_items = [
@@ -80,6 +82,21 @@ List<PlaceModel> place_items = [
 
 List<PlaceModel> beach_items = [
   PlaceModel(
+      name: "Azure Bay",
+      trip: "Swimming+Jet Ski",
+      price: {
+        "tour_price": 150,
+        "flight_price": 430,
+      },
+      image_url: "assets/images/beach3.jpeg",
+      timing: {
+        "days": "02",
+        "hours": "01",
+        "minute": "30",
+        "date": "16 August",
+      },
+      belogto: 'beaches'),
+  PlaceModel(
       name: "Golden Sands",
       trip: "Beachcombing+Cruise",
       price: {
@@ -107,21 +124,6 @@ List<PlaceModel> beach_items = [
         "hours": "10",
         "minute": "20",
         "date": "29 July",
-      },
-      belogto: 'beaches'),
-  PlaceModel(
-      name: "Azure Bay",
-      trip: "Swimming+Jet Ski",
-      price: {
-        "tour_price": 150,
-        "flight_price": 430,
-      },
-      image_url: "assets/images/beach3.jpeg",
-      timing: {
-        "days": "02",
-        "hours": "01",
-        "minute": "30",
-        "date": "16 August",
       },
       belogto: 'beaches'),
   PlaceModel(
@@ -158,18 +160,18 @@ List<PlaceModel> beach_items = [
 
 List<PlaceModel> hotel_items = [
   PlaceModel(
-      name: "Grand Summit Hotel",
-      trip: "Luxury Stay+Shuttle",
+      name: "Seaside Lodge",
+      trip: "Beachfront Stay+Boat",
       price: {
-        "tour_price": 700,
-        "flight_price": 900,
+        "tour_price": 400,
+        "flight_price": 780,
       },
-      image_url: "assets/images/hotel1.jpeg",
+      image_url: "assets/images/hotel3.jpeg",
       timing: {
-        "days": "03",
-        "hours": "08",
-        "minute": "40",
-        "date": "12 July",
+        "days": "02",
+        "hours": "01",
+        "minute": "30",
+        "date": "16 August",
       },
       belogto: 'Hotel'),
   PlaceModel(
@@ -188,18 +190,18 @@ List<PlaceModel> hotel_items = [
       },
       belogto: 'Hotel'),
   PlaceModel(
-      name: "Seaside Lodge",
-      trip: "Beachfront Stay+Boat",
+      name: "Grand Summit Hotel",
+      trip: "Luxury Stay+Shuttle",
       price: {
-        "tour_price": 400,
-        "flight_price": 780,
+        "tour_price": 700,
+        "flight_price": 900,
       },
-      image_url: "assets/images/hotel3.jpeg",
+      image_url: "assets/images/hotel1.jpeg",
       timing: {
-        "days": "02",
-        "hours": "01",
-        "minute": "30",
-        "date": "16 August",
+        "days": "03",
+        "hours": "08",
+        "minute": "40",
+        "date": "12 July",
       },
       belogto: 'Hotel'),
   PlaceModel(

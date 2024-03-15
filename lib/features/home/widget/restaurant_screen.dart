@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, camel_case_types, non_constant_identifier_names, must_be_immutable, use_super_parameters
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +101,7 @@ class _Restaurant_ScreenState extends State<Restaurant_Screen> {
           dismissThresholds: 0.75,
           action: () async {
             context.push(Routes.discoverscreen.path, extra: restaurant_items);
+            return null;
           },
           alignLabel: Alignment.center,
           label: Text(

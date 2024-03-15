@@ -1,9 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_super_parameters
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:mountain_travel/core/animations/fade_animation.dart';
 import 'package:mountain_travel/core/common_color/common_color.dart';
 import 'package:mountain_travel/features/checkout/widget/master_painter2.dart';
 
@@ -11,6 +12,7 @@ import 'package:mountain_travel/features/home/model/place_model.dart';
 import 'package:mountain_travel/router/router.dart';
 import 'package:slider_button/slider_button.dart';
 
+// ignore: must_be_immutable
 class CheckOutScreen extends StatefulWidget {
   PlaceModel model;
   CheckOutScreen({
@@ -95,25 +97,30 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              height: 180,
-                              width: 180,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  // color: Colors.white.withOpacity(0.4)),
-                                  color: yellowcolor.withOpacity(0.6)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Container(
-                                  height: 160,
-                                  width: 160,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.black.withOpacity(0.4)),
-                                  child: Image.asset(
-                                    widget.model.image_url,
-                                    fit: BoxFit.cover,
+                            FadeAnimation(
+                              begin: 0.1,
+                              end: 0.9,
+                              duration: const Duration(seconds: 1),
+                              child: Container(
+                                height: 180,
+                                width: 180,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    // color: Colors.white.withOpacity(0.4)),
+                                    color: yellowcolor.withOpacity(0.6)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: Container(
+                                    height: 160,
+                                    width: 160,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.black.withOpacity(0.4)),
+                                    child: Image.asset(
+                                      widget.model.image_url,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -155,8 +162,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                       ),
                                       TextSpan(
                                         text:
-                                            "  ${widget.model.timing['date']?.split(" ")[1]}" ??
-                                                '',
+                                            "  ${widget.model.timing['date']?.split(" ")[1]}",
                                         style: GoogleFonts.poppins(
                                             fontSize: 20,
                                             color: Colors.white,
@@ -285,53 +291,63 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Transform.rotate(
-                              angle: 270,
-                              child: Container(
-                                height: 100,
-                                width: 300,
-                                decoration: BoxDecoration(
-                                    color: Colors.transparent.withOpacity(0.4),
-                                    borderRadius: BorderRadius.circular(40)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      height: 80,
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.1),
-                                          borderRadius:
-                                              BorderRadius.circular(40)),
-                                      child: Center(
-                                        child: Text(
-                                          "\$${widget.model.price["flight_price"]}",
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 22,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
+                            TweenAnimationBuilder<double>(
+                              tween: Tween<double>(begin: -0.00, end: -0.03),
+                              duration: const Duration(seconds: 1),
+                              builder: (BuildContext context, double value,
+                                  Widget? child) {
+                                return RotationTransition(
+                                  turns: AlwaysStoppedAnimation<double>(value),
+                                  child: Container(
+                                    height: 100,
+                                    width: 300,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Colors.transparent.withOpacity(0.4),
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const SizedBox(
+                                          height: 10,
                                         ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 80,
-                                      width: 180,
-                                      child: Center(
-                                        child: Text(
-                                          "OSL > > > BPN",
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 24,
-                                              color: Colors.white),
+                                        Container(
+                                          height: 80,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  Colors.white.withOpacity(0.1),
+                                              borderRadius:
+                                                  BorderRadius.circular(40)),
+                                          child: Center(
+                                            child: Text(
+                                              "\$${widget.model.price["flight_price"]}",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 22,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
+                                        SizedBox(
+                                          height: 80,
+                                          width: 180,
+                                          child: Center(
+                                            child: Text(
+                                              "OSL > > > BPN",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 24,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -506,6 +522,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                           style: GoogleFonts.poppins(
                                               fontSize: 20, color: Colors.red)),
                                     ));
+                            return null;
                           },
                           alignLabel: Alignment.center,
                           label: Text(
