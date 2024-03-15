@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mountain_travel/core/common_color/common_color.dart';
 
-class CustomIcon extends StatelessWidget {
+class CustomColouredIcon extends StatelessWidget {
   final IconData icon;
   final Function function;
 
-  const CustomIcon({
+  const CustomColouredIcon({
     super.key,
     required this.icon,
     required this.function,
@@ -14,7 +15,7 @@ class CustomIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       borderRadius: BorderRadius.circular(35),
-      color: Colors.transparent,
+      color: yellowcolor,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {
@@ -31,7 +32,7 @@ class CustomIcon extends StatelessWidget {
           child: Center(
             child: Icon(
               icon,
-              color: Colors.white,
+              color: Colors.black,
               size: 30,
             ),
           ),

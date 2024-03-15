@@ -16,7 +16,7 @@ class MasterPainter extends CustomPainter {
     paint1.color = primarycolor;
     paint1.maskFilter = const MaskFilter.blur(BlurStyle.normal, 92);
 
-    canvas.drawCircle(Offset(size.width / 1.2, 750), 180, paint);
+    canvas.drawCircle(Offset(size.width / 1.2, 750), 180, paint1);
   }
 
   @override
