@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_super_parameters
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -520,24 +522,24 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                   vibrationFlag: true,
                                   dismissThresholds: 0.75,
                                   action: () async {
-                                    // Fluttertoast.showToast(
-                                    //     msg: "Tour has been added 😊!",
-                                    //     toastLength: Toast.LENGTH_SHORT,
-                                    //     gravity: ToastGravity.CENTER,
-                                    //     timeInSecForIosWeb: 1,
-                                    //     backgroundColor: primarycolor,
-                                    //     textColor: Colors.white,
-                                    //     fontSize: 16.0);
+                                    Fluttertoast.showToast(
+                                        msg: "Tour has been added 😊",
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: primarycolor,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
 
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                            backgroundColor: secondrycolor,
-                                            content: const Text(
-                                                "Tour has been added 😊!")));
+                                    // ScaffoldMessenger.of(context).showSnackBar(
+                                    //     SnackBar(
+                                    //         backgroundColor: secondrycolor,
+                                    //         content: const Text(
+                                    //             "Tour has been added 😊!")));
                                     context.push(
                                       Routes.homescreen.path,
                                     );
-                                    return null;
+                                    return true;
                                   },
                                   alignLabel: Alignment.center,
                                   label: TweenAnimationBuilder<double>(

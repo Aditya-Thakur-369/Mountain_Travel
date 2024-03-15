@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 
 class ScaleFadeAnimation extends StatefulWidget {
-  const ScaleFadeAnimation({Key? key, required this.child, required this.delay});
+  const ScaleFadeAnimation(
+      {Key? key, required this.child, required this.delay});
 
   final Widget child;
   final double delay;
@@ -11,7 +12,7 @@ class ScaleFadeAnimation extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api
   _ScaleFadeAnimationState createState() => _ScaleFadeAnimationState();
-} 
+}
 
 class _ScaleFadeAnimationState extends State<ScaleFadeAnimation>
     with TickerProviderStateMixin {

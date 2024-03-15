@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mountain_travel/core/animations/fade_animation.dart';
 import 'package:mountain_travel/core/common_color/common_color.dart';
@@ -52,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       end: 0.9,
                       child: CustomIcon(
                         icon: Icons.menu,
-                        function: () {},
+                        function: () {
+                        },
                       ),
                     ),
                     FadeAnimation(
