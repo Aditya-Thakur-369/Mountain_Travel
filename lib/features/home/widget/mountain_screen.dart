@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, non_constant_identifier_names, use_super_parameters, must_be_immutable
 
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:mountain_travel/core/animations/fade_animation.dart';
 import 'package:mountain_travel/core/common_color/common_color.dart';
 import 'package:mountain_travel/core/data/data.dart';
 import 'package:mountain_travel/features/home/model/place_model.dart';
@@ -36,36 +39,41 @@ class _MoutainScreenState extends State<MoutainScreen> {
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.4 + 50,
           width: 400,
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return Swiper(
-                itemWidth: screenSize.width / 1.1,
-                itemHeight: screenSize.width / 1,
-                itemCount: place_items.length,
-                scrollDirection: Axis.horizontal,
-                autoplay: true,
-                viewportFraction: 0.8,
-                scale: 0.9,
-                onIndexChanged: (value) {
-                  setState(() {
-                    current_place = place_items[seletedindex];
-                  });
-                },
-                onTap: (index) {
-                  context.push(Routes.checkoutscreen.path,
-                      extra: place_items[index]);
-                },
-                itemBuilder: (context, index) {
-                  seletedindex = index;
-                  var data = place_items[index];
-                  return ImageCard(
-                    model: data,
-                  );
-                },
-                // layout: SwiperLayout.STACK,
-                // layout: SwiperLayout.CUSTOM,
-              );
-            },
+          child: FadeAnimation(
+            begin: 0.01,
+            end: 1,
+            duration: const Duration(seconds: 1),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Swiper(
+                  itemWidth: screenSize.width / 1.1,
+                  itemHeight: screenSize.width / 1,
+                  itemCount: place_items.length,
+                  scrollDirection: Axis.horizontal,
+                  autoplay: true,
+                  viewportFraction: 0.8,
+                  scale: 0.9,
+                  onIndexChanged: (value) {
+                    setState(() {
+                      current_place = place_items[seletedindex];
+                    });
+                  },
+                  onTap: (index) {
+                    context.push(Routes.checkoutscreen.path,
+                        extra: place_items[index]);
+                  },
+                  itemBuilder: (context, index) {
+                    seletedindex = index;
+                    var data = place_items[index];
+                    return ImageCard(
+                      model: data,
+                    );
+                  },
+                  // layout: SwiperLayout.STACK,
+                  // layout: SwiperLayout.CUSTOM,
+                );
+              },
+            ),
           ),
         ),
         const SizedBox(
@@ -95,26 +103,51 @@ class _MoutainScreenState extends State<MoutainScreen> {
         const SizedBox(
           height: 10,
         ),
-        SliderButton(
-          disable: false,
-          vibrationFlag: true,
-          dismissThresholds: 0.75,
-          action: () async {
-            context.push(Routes.discoverscreen.path, extra: place_items);
-            return null;
-          },
-          alignLabel: Alignment.center,
-          label: Text(
-            "                   Discover ${current_place.belogto}  > > >",
-            style: GoogleFonts.poppins(color: Colors.white, fontSize: 18),
+        Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: TweenAnimationBuilder<double>(
+              tween: Tween<double>(begin: 200, end: 400),
+              duration: const Duration(milliseconds: 500),
+              builder: (BuildContext context, double value, Widget? child) {
+                return SliderButton(
+                  disable: false,
+                  vibrationFlag: true,
+                  dismissThresholds: 0.75,
+                  action: () async {
+                    context.push(Routes.discoverscreen.path,
+                        extra: place_items);
+                    return null;
+                  },
+                  alignLabel: Alignment.center,
+                  label: TweenAnimationBuilder<double>(
+                    tween: Tween<double>(begin: 0.1, end: 0.8),
+                    duration: const Duration(seconds: 2),
+                    builder:
+                        (BuildContext context, double value, Widget? child) {
+                      return Opacity(
+                        opacity: value,
+                        child: Text(
+                          overflow: TextOverflow.ellipsis,
+                          "                   Discover ${current_place.belogto}  > > >",
+                          style: GoogleFonts.poppins(
+                              color: Colors.white, fontSize: 18),
+                        ),
+                      );
+                    },
+                  ),
+                  width: value,
+                  height: 90,
+                  buttonSize: 70,
+                  buttonColor: yellowcolor,
+                  shimmer: false,
+                  icon: const Icon(Iconsax.trade),
+                  backgroundColor: Colors.transparent.withOpacity(0.4),
+                );
+              },
+            ),
           ),
-          width: 400,
-          height: 90,
-          buttonSize: 70,
-          buttonColor: yellowcolor,
-          shimmer: false,
-          icon: const Icon(Iconsax.archive_14),
-          backgroundColor: Colors.transparent.withOpacity(0.4),
         ),
       ],
     );

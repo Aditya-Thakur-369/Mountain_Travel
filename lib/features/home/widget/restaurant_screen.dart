@@ -95,26 +95,51 @@ class _Restaurant_ScreenState extends State<Restaurant_Screen> {
         const SizedBox(
           height: 10,
         ),
-        SliderButton(
-          disable: false,
-          vibrationFlag: true,
-          dismissThresholds: 0.75,
-          action: () async {
-            context.push(Routes.discoverscreen.path, extra: restaurant_items);
-            return null;
-          },
-          alignLabel: Alignment.center,
-          label: Text(
-            "                   Discover ${current_place.belogto}  > > >",
-            style: GoogleFonts.poppins(color: Colors.white, fontSize: 18),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: TweenAnimationBuilder<double>(
+              tween: Tween<double>(begin: 200, end: 400),
+              duration: const Duration(milliseconds: 500),
+              builder: (BuildContext context, double value, Widget? child) {
+                return SliderButton(
+                  disable: false,
+                  vibrationFlag: true,
+                  dismissThresholds: 0.75,
+                  action: () async {
+                    context.push(Routes.discoverscreen.path,
+                        extra: restaurant_items);
+                    return null;
+                  },
+                  alignLabel: Alignment.center,
+                  label: TweenAnimationBuilder<double>(
+                    tween: Tween<double>(begin: 0.1, end: 0.8),
+                    duration: const Duration(seconds: 2),
+                    builder:
+                        (BuildContext context, double value, Widget? child) {
+                      return Opacity(
+                        opacity: value,
+                        child: Text(
+                          overflow: TextOverflow.ellipsis,
+                          "                   Discover ${current_place.belogto}  > > >",
+                          style: GoogleFonts.poppins(
+                              color: Colors.white, fontSize: 18),
+                        ),
+                      );
+                    },
+                  ),
+                  width: value,
+                  height: 90,
+                  buttonSize: 70,
+                  buttonColor: yellowcolor,
+                  shimmer: false,
+                  icon: const Icon(Iconsax.trade),
+                  backgroundColor: Colors.transparent.withOpacity(0.4),
+                );
+              },
+            ),
           ),
-          width: 400,
-          height: 90,
-          buttonSize: 70,
-          buttonColor: yellowcolor,
-          shimmer: false,
-          icon: const Icon(Iconsax.archive_14),
-          backgroundColor: Colors.transparent.withOpacity(0.4),
         ),
       ],
     );

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_super_parameters
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -233,6 +234,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                             BorderRadius.circular(40)),
                                     child: Center(
                                       child: Text(
+                                        overflow: TextOverflow.ellipsis,
                                         "\$${widget.model.price["tour_price"]}",
                                         style: GoogleFonts.poppins(
                                             fontSize: 22,
@@ -245,6 +247,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                     height: 80,
                                     width: 180,
                                     child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 6,
                                       "Enim magna irure deserunt adipisicing ea cillum fugiat irure aute laboris. Do labore est reprehenderit minim. Ipsum reprehenderit velit labore esse Lorem proident exercitation ullamco cupidatat do.",
                                       style: GoogleFonts.poppins(
                                           fontSize: 14, color: Colors.white),
@@ -501,42 +505,70 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         const SizedBox(
                           height: 10,
                         ),
-                        SliderButton(
-                          disable: false,
-                          vibrationFlag: true,
-                          dismissThresholds: 0.75,
-                          action: () async {
-                            context.push(
-                              Routes.homescreen.path,
-                            );
-                            // ScaffoldMessenger.of(context).showSnackBar(
-                            //     const SnackBar(
-                            //         content: Text("Tour has been added 😊!")));
+                        Padding(
+                          // ignore: prefer_const_constructors
+                          padding: EdgeInsets.only(left: 10),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: TweenAnimationBuilder<double>(
+                              tween: Tween<double>(begin: 200, end: 400),
+                              duration: const Duration(milliseconds: 500),
+                              builder: (BuildContext context, double value,
+                                  Widget? child) {
+                                return SliderButton(
+                                  disable: false,
+                                  vibrationFlag: true,
+                                  dismissThresholds: 0.75,
+                                  action: () async {
+                                    // Fluttertoast.showToast(
+                                    //     msg: "Tour has been added 😊!",
+                                    //     toastLength: Toast.LENGTH_SHORT,
+                                    //     gravity: ToastGravity.CENTER,
+                                    //     timeInSecForIosWeb: 1,
+                                    //     backgroundColor: primarycolor,
+                                    //     textColor: Colors.white,
+                                    //     fontSize: 16.0);
 
-                            showCupertinoDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    CupertinoAlertDialog(
-                                      // Add a title to the dialog with the 'Logout?' text, using the textTheme to apply styles
-                                      title: Text('Logout?',
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            backgroundColor: secondrycolor,
+                                            content: const Text(
+                                                "Tour has been added 😊!")));
+                                    context.push(
+                                      Routes.homescreen.path,
+                                    );
+                                    return null;
+                                  },
+                                  alignLabel: Alignment.center,
+                                  label: TweenAnimationBuilder<double>(
+                                    tween: Tween<double>(begin: 0.1, end: 0.8),
+                                    duration: const Duration(seconds: 2),
+                                    builder: (BuildContext context,
+                                        double value, Widget? child) {
+                                      return Opacity(
+                                        opacity: value,
+                                        child: Text(
+                                          overflow: TextOverflow.ellipsis,
+                                          "                   \$${widget.model.price["tour_price"]! + widget.model.price["flight_price"]!}  checkout > > >",
                                           style: GoogleFonts.poppins(
-                                              fontSize: 20, color: Colors.red)),
-                                    ));
-                            return null;
-                          },
-                          alignLabel: Alignment.center,
-                          label: Text(
-                            "                   \$${widget.model.price["tour_price"]! + widget.model.price["flight_price"]!}  checkout > > >",
-                            style: GoogleFonts.poppins(
-                                color: Colors.white, fontSize: 18),
+                                              color: Colors.white,
+                                              fontSize: 18),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  width: value,
+                                  height: 90,
+                                  buttonSize: 70,
+                                  buttonColor: yellowcolor,
+                                  shimmer: false,
+                                  icon: const Icon(Iconsax.bag_2),
+                                  backgroundColor:
+                                      Colors.transparent.withOpacity(0.4),
+                                );
+                              },
+                            ),
                           ),
-                          width: 400,
-                          height: 90,
-                          buttonSize: 70,
-                          buttonColor: yellowcolor,
-                          shimmer: false,
-                          icon: const Icon(Iconsax.bag_2),
-                          backgroundColor: Colors.transparent.withOpacity(0.4),
                         ),
                         const SizedBox(
                           height: 50,

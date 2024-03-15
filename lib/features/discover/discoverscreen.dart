@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 
 import 'package:mountain_travel/core/data/data.dart';
 import 'package:mountain_travel/features/discover/widget/custom_card.dart';
@@ -60,44 +61,92 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                // Container(
-                //   height: 100,
-                //   width: 200,
-                //   decoration: BoxDecoration(
-                //       color: Colors.white.withOpacity(0.1),
-                //       borderRadius: BorderRadius.circular(50)),
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(8.0),
-                //     child: Row(
-                //       crossAxisAlignment: CrossAxisAlignment.center,
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //       children: [
-                //         Padding(
-                //           padding: const EdgeInsets.all(10.0),
-                //           child: Column(
-                //             children: [
-                //               Text(
-                //                 "Sort by",
-                //                 style: GoogleFonts.poppins(
-                //                     fontSize: 16,
-                //                     color: Colors.white,
-                //                     fontWeight: FontWeight.w400),
-                //               ),
-                //               Text(
-                //                 "Price",
-                //                 style: GoogleFonts.poppins(
-                //                     fontSize: 24,
-                //                     color: Colors.white,
-                //                     fontWeight: FontWeight.w400),
-                //               )
-                //             ],
-                //           ),
-                //         ),
-                //         CustomIcon(icon: Iconsax.arrow_down_14, function: () {})
-                //       ],
-                //     ),
-                //   ),
-                // ),
+                Row(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 200,
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Sort by",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Text(
+                                    "Price",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 24,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400),
+                                  )
+                                ],
+                              ),
+                            ),
+                            CustomIcon(
+                                icon: Iconsax.arrow_down_14, function: () {})
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      height: 100,
+                      width: 200,
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Apply ",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Text(
+                                    "Filter",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 24,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400),
+                                  )
+                                ],
+                              ),
+                            ),
+                            CustomIcon(
+                                icon: Iconsax.arrow_down_14, function: () {})
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 // Row(
                 //   children: [
                 //     Expanded(
